@@ -1,13 +1,21 @@
 import {screen, render, within} from "@testing-library/react";
 import UserList from "./UserList";
 
-test('should render one row per user', () => {
-    //render the component
+function renderComponent() {
     const users = [
         {name: 'sylvia', email: 'sylvia@gmail.com'},
         {name: 'jack', email: 'jack@gmail.com'}
     ]
     render(<UserList users={users}/>)
+
+    return {
+        users,
+    };
+}
+
+test('should render one row per user', () => {
+    //render the component
+    renderComponent();
     //find all the rows in the table
     //const rows = screen.getAllByRole('row');this will select 3 rows which includes header row
 
@@ -22,13 +30,9 @@ test('should render one row per user', () => {
 });
 
 test('should render the name and email', () => {
-    const users = [
-        {name: 'sylvia', email: 'sylvia@gmail.com'},
-        {name: 'jack', email: 'jack@gmail.com'}
-    ]
-    render(<UserList users={users}/>)
+    const {users} = renderComponent();
 
-    for(let user of users) {
+    for (let user of users) {
         const name = screen.getByRole('cell', {name: user.name});
         const email = screen.getByRole('cell', {name: user.email})
 
