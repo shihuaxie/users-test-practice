@@ -15,7 +15,7 @@ export default function UserList({users}) {
                 <th className="border px-4 py-2">Email</th>
             </tr>
             </thead>
-            <tbody>{renderedUsers}</tbody>
+            <tbody data-testid="users">{renderedUsers}</tbody>
         </table>
     );
 
