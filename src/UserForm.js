@@ -7,14 +7,16 @@ export default function UserForm({onUserAdd}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         //console.log(name,email)
-        onUserAdd({name, email})
+        onUserAdd({name, email});
+
+        setEmail('');
+        setName('');
     }
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="name" className="block">
                 <span className="block mt-2 mb-2 text-sm w-20 bg-blue-500 hover:bg-blue-600 text-white font-medium text-slate-700">Name</span>
                 <input id='name'
-                       type="text"
                        value={name}
                        onChange={e => setName(e.target.value)}
                        className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
@@ -28,7 +30,6 @@ export default function UserForm({onUserAdd}) {
                 <span className="block mt-2 mb-2 text-sm w-20 bg-blue-500 hover:bg-blue-600 text-white font-medium text-slate-700">Email</span>
 
                 <input id="email"
-                       type="text"
                        value={email}
                        onChange={e => setEmail(e.target.value)}
                        className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400

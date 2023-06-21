@@ -1,12 +1,13 @@
-export default function UserList({users}) {
+export default function UserList({ users }) {
     const renderedUsers = users.map((user) => {
         return (
             <tr key={user.name}>
                 <td className="border px-4 py-2">{user.name}</td>
                 <td className="border px-4 py-2">{user.email}</td>
             </tr>
-        )
+        );
     });
+
     return (
         <table className="border-collapse">
             <thead>
@@ -18,6 +19,4 @@ export default function UserList({users}) {
             <tbody data-testid="users">{renderedUsers}</tbody>
         </table>
     );
-
-
 }
